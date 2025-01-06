@@ -35,8 +35,8 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With",
     "Content-Type",
     "Accept"
-  );
-}, next());
+  ), next()
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -48,6 +48,7 @@ app.get("/", (req, res) => {
 
 app.post("/upload", upload.single("file"), (req, res) => {
     console.log("file uploaded");
+    res.json({message: "File Uploaded successfully"})
 })
 
 app.listen(8000, () => {
